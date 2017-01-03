@@ -1,5 +1,7 @@
 #encoding: UTF-8
 require 'sinatra'
+require 'pony'
+require 'sendgrid-ruby'
 
 def assonance mot 
 	def voyelle v
@@ -367,4 +369,28 @@ end
 
 get '/contact' do
 	erb :contact 
+end 
+
+post '/contact' do
+	Pony.mail(
+      :from => params[:Nom] + "<" + params[:E-mail] + ">",
+      :to => 'P.lucas021@gmail.com',
+      :subject => "Vous avez un message de " + params[:Nom],
+      :body => params[:message],
+      :port => '587',
+      :via => :smtp,
+      :via_options => { 
+        :address              => 'smtp.sendgrid.net', 
+        :port                 => '587', 
+        :enable_starttls_auto => true, 
+        :user_name            => ENV['SENDGRID_USERNAME'], 
+        :password             => ENV['SENDGRID_PASSWORD'], 
+        :authentication       => :plain, 
+        :domain               => ENV['SENDGRID_DOMAIN']
+      })
+    redirect '/envoyé' 
+end
+
+get '/envoyé'
+	erb :envoyé
 end 
