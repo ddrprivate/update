@@ -391,6 +391,6 @@ post '/contact' do
     redirect '/envoyé' 
 end
 
-get '/envoyé'
+get '/envoyé' do
 	erb :envoyé
 end 
