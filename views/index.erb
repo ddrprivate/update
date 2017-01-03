@@ -1,0 +1,133 @@
+
+<html>
+	<head>
+		<title>Dealer de Rime | trouvez l'inspiration, écrivez vos textes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+		<!--<link rel="icon" type="image/png" href="images/icon.png" sizes="32x32" /> -->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="/">Dealer de Rimes | <em>Source d'inspiration</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/">Rimez</a></li>
+							<li><a href="/a-propos">À propos</a></li>
+							<li><a href="/inscription" class="button special">Sign Up</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>Dealer de Rimes</h2>
+							<p><strong>Trouvez l’inspiration avec notre dictionnaire de rime.</strong><br>Il contient les mots et expressions les plus utilisés du rap français.<br><br>
+							   Entrez un mot et notre algorithme vous proposera les meilleurs rimes<br> en fonction des allitérations et assonances trouvé.</p>
+						</header>
+						<span class="image"><img src="images/logo.jpg" alt="dealerderimes logo" WIDTH=311 HEIGHT=311 /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- One -->
+				<section id="one" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h3>Dictionnaire de rimes</h3>
+								<form method="post" action="/#one">
+									<div class="row uniform 50%">
+										<div class="12u$">
+											<input type="text" name="mot" id="name" value="" placeholder="Entrez un mot" />
+										</div>
+										<div class="12u$">
+											<ul class="actions">
+												<li><input type="submit" value="Rime" class="special" /></li>
+											</ul>
+									</div>
+								</form>
+						</header>
+
+						<!-- Content -->
+							<section id="content">
+								<h4><%=@mot%></h4>
+								<p style="font-size:50px">
+								<h5><%=@asso1.first%></h5>
+								<%@asso1=@asso1.drop(1) unless @asso1.empty?%>
+								<%@asso1=@asso1.join(", ")%>
+								<%=@asso1.force_encoding("UTF-8")%>
+								</p>
+			
+								<p style="font-size:50px">
+								<h5><%=@asso2.first%></h5>
+								<%@asso2=@asso2.drop(1) unless @asso2.empty?%>
+								<%@asso2=@asso2.join(", ")%>
+								<%=@asso2.force_encoding("UTF-8")%>
+								</p>
+								
+								<p style="font-size:50px">
+								<h5><%=@asso3.first%></h5>
+								<%@asso3=@asso3.drop(1) unless @asso3.empty?%>
+								<%@asso3=@asso3.join(", ")%>
+								<%=@asso3.force_encoding("UTF-8")%>
+								</p>
+								
+								<p style="font-size:50px">
+								<h5><%=@asso4.first%></h5>
+								<%@asso4=@asso4.drop(1) unless @asso4.empty?%>
+								<%@asso4=@asso4.join(", ")%>
+								<%=@asso4.force_encoding("UTF-8")%>
+								</p>
+								
+								<p style="font-size:50px">
+								<h5><%=@asso5.first%></h5>
+								<%@asso5=@asso5.drop(1) unless @asso5.empty?%>
+								<%@asso5=@asso5.join(", ")%>
+								<%=@asso5.force_encoding("UTF-8")%>
+								</p>
+								<center><a href="/a-propos"> Comment ça marche ? </a></center>
+							</section>
+
+					</div>
+				</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>	
+						<li><a href="/contact">E-mail</a></li>	
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Dealer de Rimes. Tous droits réservés. 2017.</li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
