@@ -407,3 +407,21 @@ end
 get '/envoye' do
 	erb :envoye
 end 
+
+get '/lucas_pedroza_fr' do
+	@lang = "fr"
+	erb :profil_fr
+end
+
+get '/lucas_pedroza_en' do
+	@lang = "en"
+	erb :profil_en
+end
+
+get 'email' do
+	if @lang == "fr"
+		erb :mail_fr
+	else 
+		erb :mail_en
+	end
+end 
