@@ -401,9 +401,9 @@ post '/contact' do
       subject: "Vous avez un message de " + params[:nom],
       body: params[:message],
       )
-    redirect '/envoyé' 
+    redirect '/envoye' 
 end
 
-get '/envoyé' do
-	erb :envoyé
+get '/envoye' do
+	erb :envoye
 end 
