@@ -375,7 +375,7 @@ post '/contact' do
 	Pony.mail(
       :from => params[:nom] + "<" + params[:email] + ">",
       :to => 'P.lucas021@gmail.com',
-      :subject => "Vous avez un message de " + params[:Nom],
+      :subject => "Vous avez un message de " + params[:nom],
       :body => params[:message],
       :port => '587',
       :via => :smtp,
