@@ -1,6 +1,6 @@
 #encoding: UTF-8
 require 'sinatra'
-require 'pony'
+require 'pon'
 require 'sendgrid-ruby'
 
 def assonance mot 
