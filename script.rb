@@ -2,6 +2,8 @@
 require 'sinatra'
 require 'pony'
 require 'sendgrid-ruby'
+require 'sinatra/base'
+
 
 
 class Application < Sinatra::Base
