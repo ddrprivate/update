@@ -3,6 +3,27 @@ require 'sinatra'
 require 'pony'
 require 'sendgrid-ruby'
 
+
+class Application < Sinatra::Base
+  configure do
+  
+    Pony.options = {
+      :via => :smtp,
+      :via_options => {
+        :address => 'smtp.sendgrid.net',
+        :port => '587',
+        :domain => 'young-beach-14460.herokuapp.com',
+        :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+        :authentication => :plain,
+        :enable_starttls_auto => true
+      }
+    }
+  end
+
+ 
+end
+
 def assonance mot 
 	def voyelle v
 	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê"
@@ -373,21 +394,11 @@ end
 
 post '/contact' do
 	Pony.mail(
-      :from => params[:nom] + "<" + params[:email] + ">",
-      :to => 'P.lucas021@gmail.com',
-      :subject => "Vous avez un message de " + params[:nom],
-      :body => params[:message],
-      :port => '587',
-      :via => :smtp,
-      :via_options => { 
-        :address              => 'smtp.sendgrid.net', 
-        :port                 => '587', 
-        :enable_starttls_auto => true, 
-        :user_name            => ENV['SENDGRID_USERNAME'], 
-        :password             => ENV['SENDGRID_PASSWORD'], 
-        :authentication       => :plain, 
-        :domain               => ENV['SENDGRID_DOMAIN']
-      })
+      from: params[:nom] + "<" + params[:email] + ">",
+      to: 'P.lucas021@gmail.com',
+      subject: "Vous avez un message de " + params[:nom],
+      body: params[:message],
+      )
     redirect '/envoyé' 
 end
 
