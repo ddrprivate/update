@@ -52,7 +52,7 @@ def assonance mot
 					match = line[x].to_s + line[x+1].to_s
 					if match == mot
 						File.open output, 'a' do |f| 
-							f.puts line.capitalize unless mot == "re"
+							f.puts line.capitalize 
 						end 
 					end 
 				end 
@@ -257,7 +257,7 @@ def classage mot
 					if (consonne line[x].to_s) && (voyelle line[x+1].to_s)
 						match = line[x].to_s + line[x+1].to_s
 						if match == mot
-							@asso1.push(line.capitalize) unless mot == "re"
+							@asso1.push(line.capitalize) 
 						end 
 					end 
 					x =x+1
@@ -272,7 +272,7 @@ def classage mot
 					if (consonne line[x].to_s.force_encoding("UTF-8")) && (voyelle line[x+1].to_s.force_encoding("UTF-8"))
 						match = line[x].to_s.force_encoding("UTF-8") + line[x+1].to_s.force_encoding("UTF-8")
 						if match == mot
-							@asso2.push(line.capitalize) unless mot == "re"
+							@asso2.push(line.capitalize)
 						end 
 						
 					end 
@@ -288,7 +288,7 @@ def classage mot
 					if (consonne line[x].to_s.force_encoding("UTF-8")) && (voyelle line[x+1].to_s.force_encoding("UTF-8"))
 						match = line[x].to_s.force_encoding("UTF-8") + line[x+1].to_s.force_encoding("UTF-8")
 						if match == mot
-							@asso3.push(line.capitalize) unless mot == "re"
+							@asso3.push(line.capitalize) 
 						end 
 					end 
 					x =x+1
@@ -303,7 +303,7 @@ def classage mot
 					if (consonne line[x].to_s.force_encoding("UTF-8")) && (voyelle line[x+1].to_s.force_encoding("UTF-8"))
 						match = line[x].to_s.force_encoding("UTF-8") + line[x+1].to_s.force_encoding("UTF-8")
 						if match == mot
-							@asso4.push(line.capitalize) unless mot == "re"
+							@asso4.push(line.capitalize) 
 						end 
 					end 
 					x =x+1
@@ -318,7 +318,7 @@ def classage mot
 					if (consonne line[x].to_s.force_encoding("UTF-8")) && (voyelle line[x+1].to_s.force_encoding("UTF-8"))
 						match = line[x].to_s.force_encoding("UTF-8") + line[x+1].to_s.force_encoding("UTF-8")
 						if match == mot
-							@asso5.push(line.capitalize) unless mot == "re"
+							@asso5.push(line.capitalize) 
 						end  
 					end 
 					x =x+1
