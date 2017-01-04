@@ -79,7 +79,7 @@ end
 
 def phonetique mot
 	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || x=="ê"
+	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê"
 			return true 
 		else
 			return false 
