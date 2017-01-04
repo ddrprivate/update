@@ -418,7 +418,7 @@ get '/lucas_pedroza_en' do
 	erb :profil_en
 end
 
-get 'email' do
+get '/email' do
 	if @lang == "fr"
 		erb :mail_fr
 	else 
