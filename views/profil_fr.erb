@@ -99,10 +99,10 @@
 								<li><h5>Parler anglais en situation professionnelle</h5></li>	
 							</ul>
 							</section>
-							
 							<section id="mail">
+							<%if @mail==0%>
 								<center><h3>Contactez moi par mail</h3></center>
-								<form method="post" action="/lucas_pedroza_fr">
+								<form method="post" action="/lucas_pedroza_fr/#mail">
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)">
 											<input type="text" name="nom" id="nom" value="" placeholder="Nom" />
@@ -115,13 +115,17 @@
 										</div>
 										<div class="12u$">
 											<ul class="actions">
-												<li><input type="submit" value="Send" class="special" /></li>
-												<li><input type="reset" value="Delete" /></li>
+												<li><input type="submit" value="Envoyer" class="special" /></li>
+												<li><input type="reset" value="Effacer" /></li>
 											</ul>
 										</div>
 									</div>
 								</form>
+							<%else%>
+							<center><p><strong>Message envoyé. Merci</strong></p></center>
+							<%end%>
 							</section>
+							
 					</div>
 			<!-- Footer -->
 				<footer id="footer">

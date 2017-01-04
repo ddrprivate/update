@@ -36,7 +36,7 @@
 								<center><h3>564 King Street, Aberdeen AB24 5SR<br> 
 											United-Kingdom<br>
 											27/05/1996<br>
-											E-mail: P.lucas021@gmail.com<br>
+											E-mail: <a href="#mail">P.lucas021@gmail.com</a><br>
 											Telephone: +44 75 44 48 77 72</h3></center>									
 							</section>
 						</header>
@@ -93,9 +93,10 @@
 							</ul>
 							</section>
 							
-							<section>
+							<section id="mail">
+							<%if @mail==0%>
 								<center><h3>Contact me by email</h3></center>
-								<form method="post" action="/lucas_pedroza_en">
+								<form method="post" action="/lucas_pedroza_en/#mail">
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)">
 											<input type="text" name="nom" id="nom" value="" placeholder="Name" />
@@ -114,6 +115,9 @@
 										</div>
 									</div>
 								</form>
+							<%else%>
+							<center><p><strong>Message sent. Thank you</strong></p></center>
+							<%end%>
 							</section>
 					</div>
 			<!-- Footer -->

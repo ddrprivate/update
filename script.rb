@@ -409,10 +409,12 @@ get '/envoye' do
 end 
 
 get '/lucas_pedroza_fr' do
+	@mail = 0
 	erb :profil_fr
 end
 
 post '/lucas_pedroza_fr' do
+	@mail = 1
 	Pony.mail(
       from: params[:nom] + "<" + params[:email] + ">",
       to: 'P.lucas021@gmail.com',
@@ -423,14 +425,19 @@ post '/lucas_pedroza_fr' do
 end
 
 get '/lucas_pedroza_en' do
-	@lang = "en"
+	@mail = 0
 	erb :profil_en
 end
 
-get '/email' do
-	if @lang == "fr"
-		erb :mail_fr
-	else 
-		erb :mail_en
-	end
-end 
+post '/lucas_pedroza_en' do
+	@mail = 1
+	Pony.mail(
+      from: params[:nom] + "<" + params[:email] + ">",
+      to: 'P.lucas021@gmail.com',
+      subject: "Vous avez un message de " + params[:nom],
+      body: params[:message],
+      )
+	erb :profil_en
+end
+
+
