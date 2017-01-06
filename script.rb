@@ -380,7 +380,7 @@ post '/' do
 	phonetique params[:mot].downcase
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
-	classage params[:mot].downcase
+	classage params[:mot].downcase 
 	erb :index 
 end
 
@@ -420,7 +420,7 @@ post '/lucas_pedroza_fr' do
 	Pony.mail(
       from: params[:nom] + "<" + params[:email] + ">",
       to: 'P.lucas021@gmail.com',
-      subject: "Vous avez un message de " + params[:nom],
+      subject: "Vous avez un message de: " + params[:nom],
       body: params[:message],
       )
 	erb :profil_fr
