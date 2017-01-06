@@ -384,6 +384,29 @@ post '/' do
 	erb :index 
 end
 
+get '/dictionnaire/:rime' do
+	@rimedoc = File.open("rime_final.txt", "w+")
+	@rimedoc1 = File.open("rime.txt", "w+")
+	@rimedoc2 = File.open("rime2.txt", "w+")
+	@asso1 = Array.new
+	@asso1 = []
+	@asso2 = Array.new
+	@asso2 = []
+	@asso3 = Array.new
+	@asso3 = []
+	@asso4 = Array.new
+	@asso4 = []
+	@asso5 = Array.new 
+	@asso5 = []
+	@mot = params['rime'].capitalize
+	assonance params['rime'].downcase
+	phonetique params['rime'].downcase
+	nodouble("rime2.txt", "rime_final.txt")
+	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
+	classage params['rime'].downcase 
+	erb :dictionnaire
+end 
+
 get '/a-propos' do
 	erb :about
 end 

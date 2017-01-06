@@ -1,42 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Dealer de Rime | Trouvez l'inspiration, écrivez vos textes</title>
+		<title>Dealer de Rimes | rime avec "<%=@mot%>"</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="Trouvez des rimes et allitérations simplement avec notre dictionnaire adapté au rap Français, améliorez votre écriture et gardez l'inspiration..."/>
-		<meta name="keywords" content="dictionnaire de rimes, écriture, textes, rap français, mots, inspiration, dealer, simple, allitérations"/>
-	
-		
-		<meta name="twitter:card" value="summary"/>
-		<meta property="og:title" content="Dealer de Rime | Trouvez l'inspiration, écrivez vos textes" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="http://www.dealerderimes.fr" />
-		<meta property="og:image" content="images/logo.jpg" />
-		<meta property="og:description" content="Trouvez des rimes et allitérations simplement avec notre dictionnaire adapté au rap Français" /> 
-		
+		<meta name="description" content="Liste des mots qui riment avec <%=@mot%> et des allitérations en <%=@asso1.first%> "/>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-		<!--<link rel="icon" type="image/png" href="images/icon.png" sizes="32x32" /> -->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-89932021-1', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
 	</head>
 	<body class="landing">
+	
 		<div id="page-wrapper">
-
+				
 			<!-- Header -->
 				<header id="header">
 					<h1 id="logo"><a href="/">Dealer de Rimes | <em>Source d'inspiration</a></h1>
@@ -49,21 +29,8 @@
 					</nav>
 				</header>
 
-			<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>Dealer de Rimes</h2>
-							<p><strong>Trouvez l’inspiration avec notre dictionnaire de rime.</strong><br>Il contient les mots et expressions les plus utilisés du rap français.<br><br>
-							   Entrez un mot et notre algorithme vous proposera les meilleurs rimes<br> en fonction des <a href="/a-propos">allitérations</a> trouvées.</p>
-						</header>
-						<span class="image"><img src="images/logo.jpg" alt="dealerderimes logo" style="max-width: 100%; height: auto;"/></span>
-					</div>
-					<a href="#dictionnaire" class="goto-next scrolly">Next</a>
-				</section>
-
-			<!-- One -->
-				<section id="dictionnaire" class="wrapper style1">
+			<!-- Main -->
+			<section id="one" class="wrapper style1">
 					<div class="container">
 						<header class="major">
 							<h3>Dictionnaire de rimes</h3>
@@ -81,7 +48,6 @@
 						</header>
 
 						<!-- Content -->
-							<section id="content">
 								<h4><%=@mot%></h4>
 								<p style="font-size:50px">
 								<h5><%=@asso1.first%></h5>
@@ -89,45 +55,40 @@
 								<%@asso1=@asso1.join(", ")%>
 								<%=@asso1.force_encoding("UTF-8")%>
 								</p>
+			
 								<p style="font-size:50px">
 								<h5><%=@asso2.first%></h5>
 								<%@asso2=@asso2.drop(1) unless @asso2.empty?%>
 								<%@asso2=@asso2.join(", ")%>
 								<%=@asso2.force_encoding("UTF-8")%>
 								</p>
+								
 								<p style="font-size:50px">
 								<h5><%=@asso3.first%></h5>
 								<%@asso3=@asso3.drop(1) unless @asso3.empty?%>
 								<%@asso3=@asso3.join(", ")%>
 								<%=@asso3.force_encoding("UTF-8")%>
 								</p>
+								
 								<p style="font-size:50px">
 								<h5><%=@asso4.first%></h5>
 								<%@asso4=@asso4.drop(1) unless @asso4.empty?%>
 								<%@asso4=@asso4.join(", ")%>
 								<%=@asso4.force_encoding("UTF-8")%>
 								</p>
+								
 								<p style="font-size:50px">
 								<h5><%=@asso5.first%></h5>
 								<%@asso5=@asso5.drop(1) unless @asso5.empty?%>
 								<%@asso5=@asso5.join(", ")%>
 								<%=@asso5.force_encoding("UTF-8")%>
 								</p>
-								<center>
-							 <ul class="icons">
-							 <p><strong>Exemples:</strong></p>
-							<li>Rimes avec:<a href="/dictionnaire/bicrave"> Bicrave</a></li>
-							<li>Rimes avec:<a href="/dictionnaire/qualité"> Qualité</a></li>  
-							</ul>
-							 </center>
 								<center><a href="/a-propos"> Comment ça marche ? </a></center>
-							</section>
-
+							
 					</div>
 				</div>
-					<a href="#two" class="goto-next scrolly">Next</a>
+					
 				</section>
-
 
 			<!-- Footer -->
 				<footer id="footer">
@@ -153,6 +114,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+    </div>
 	</body>
 </html>
