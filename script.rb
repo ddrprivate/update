@@ -47,7 +47,7 @@ def assonance mot
 			x=0 
 			while x < line.length
 				if (consonne line[x].to_s) && (voyelle line[x+1].to_s)
-					match = line[x].to_s + line[x+1].to_s
+					match = line[x].to_s + line[x+1].to_s 
 					if match == mot
 						File.open output, 'a' do |f| 
 							f.puts line.capitalize 
@@ -64,11 +64,12 @@ def assonance mot
 	count=0
 	mot = mot.downcase 
 	while (i < mot.length) && (count < 5)
+			y = mot.length
 		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
 			combi = mot[i].to_s + mot[i+1].to_s
 			puts combi
 			count = count+1
-			rimeasso("dico_final.txt", combi)
+			rimeasso("dico_final.txt", combi) 
 		end 
 		i =i+1
 		
@@ -172,7 +173,8 @@ def phonetique mot
 									ey1 = line[y-1]
 									ey2 = line[y-2] + line[y-1]
 									ey3 = line[y-3] + line[y-2] + line[y-1]
-									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && (ex3 == "eur" )) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion")))
+									ey4 = line[y-4] + line[y-3] + line[y-2] + line[y-1]
+									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && (ex3 == "eur" )) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion") || (ey4 == "ions"))
 								end  
 								x=x+1
 						else
