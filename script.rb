@@ -26,7 +26,7 @@ end
 
 def assonance mot 
 	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê"
+	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î"
 			return true 
 		else
 			return false 
@@ -90,7 +90,7 @@ end
 
 def phonetique mot
 	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê"
+	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î"
 			return true 
 		else
 			return false 
@@ -115,7 +115,7 @@ def phonetique mot
 		end
 	end
 	def i x
-		if x=="i"
+		if x=="i" || x=="î"
 			return true 
 		end
 	end
@@ -249,7 +249,7 @@ end
 
 def classage mot 
 	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é"
+	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î"
 			return true 
 		else
 			return false 
