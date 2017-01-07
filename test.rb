@@ -1,28 +1,6 @@
 #encoding: UTF-8
 require 'sinatra'
-require 'pony'
-require 'sendgrid-ruby'
-require 'sinatra/base'
 
-class Application < Sinatra::Base
-  configure do
-  
-    Pony.options = {
-      :via => :smtp,
-      :via_options => {
-        :address => 'smtp.sendgrid.net',
-        :port => '587',
-        :domain => ENV['SENDGRID_DOMAIN'],
-        :user_name => ENV['SENDGRID_USERNAME'],
-        :password => ENV['SENDGRID_PASSWORD'],
-        :authentication => :plain,
-        :enable_starttls_auto => true
-      }
-    }
-  end
-
- 
-end
 
 def assonance mot 
 	def voyelle v
@@ -46,8 +24,15 @@ def assonance mot
 		File.open(dico, "r:UTF-8").each_line do |line|
 			x=0 
 			while x < line.length
-				if (consonne line[x].to_s) && (voyelle line[x+1].to_s)
-					match = line[x].to_s + line[x+1].to_s
+				if (consonne line[x].to_s) && (voyelle line[x+1].to_s) && (voyelle line[x+2].to_s)
+					match = line[x].to_s + line[x+1].to_s + line[x+2].to_s
+					if match == mot
+						File.open output, 'a' do |f| 
+							f.puts line.capitalize 
+						end 
+					end 
+				elsif (consonne line[x].to_s) && (voyelle line[x+1].to_s) 
+					match = line[x].to_s + line[x+1].to_s 
 					if match == mot
 						File.open output, 'a' do |f| 
 							f.puts line.capitalize 
@@ -64,11 +49,17 @@ def assonance mot
 	count=0
 	mot = mot.downcase 
 	while (i < mot.length) && (count < 5)
-		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
-			combi = mot[i].to_s + mot[i+1].to_s
+			y = mot.length
+		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s) && (voyelle mot[i+2].to_s)
+			combi = mot[i].to_s + mot[i+1].to_s + mot[i+2].to_s
 			puts combi
 			count = count+1
 			rimeasso("dico_final.txt", combi)
+		elsif (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
+			combi = mot[i].to_s + mot[i+1].to_s
+			puts combi
+			count = count+1
+			rimeasso("dico_final.txt", combi) 
 		end 
 		i =i+1
 		
@@ -172,7 +163,8 @@ def phonetique mot
 									ey1 = line[y-1]
 									ey2 = line[y-2] + line[y-1]
 									ey3 = line[y-3] + line[y-2] + line[y-1]
-									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && (ex3 == "eur" )) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion")))
+									ey4 = line[y-4] + line[y-3] + line[y-2] + line[y-1]
+									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && (ex3 == "eur" )) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion") || (ey4 == "ions")))
 								end  
 								x=x+1
 						else
@@ -332,7 +324,11 @@ def classage mot
 	@count = 0
 	i=0
 	while i < mot.length
-		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
+		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s) && (voyelle mot[i+2].to_s)
+			combi = mot[i].to_s + mot[i+1].to_s + mot[i+2].to_s
+			@count = @count + 1
+			rimeasso(@rimedoc, combi)
+		elsif (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
 			combi = mot[i].to_s + mot[i+1].to_s
 			@count = @count + 1
 			rimeasso(@rimedoc, combi)
@@ -380,9 +376,32 @@ post '/' do
 	phonetique params[:mot].downcase
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
-	classage params[:mot].downcase
+	classage params[:mot].downcase 
 	erb :index 
 end
+
+get '/dictionnaire/:rime' do
+	@rimedoc = File.open("rime_final.txt", "w+")
+	@rimedoc1 = File.open("rime.txt", "w+")
+	@rimedoc2 = File.open("rime2.txt", "w+")
+	@asso1 = Array.new
+	@asso1 = []
+	@asso2 = Array.new
+	@asso2 = []
+	@asso3 = Array.new
+	@asso3 = []
+	@asso4 = Array.new
+	@asso4 = []
+	@asso5 = Array.new 
+	@asso5 = []
+	@mot = params['rime'].capitalize
+	assonance params['rime'].downcase
+	phonetique params['rime'].downcase
+	nodouble("rime2.txt", "rime_final.txt")
+	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
+	classage params['rime'].downcase 
+	erb :dictionnaire
+end 
 
 get '/a-propos' do
 	erb :about
@@ -420,7 +439,7 @@ post '/lucas_pedroza_fr' do
 	Pony.mail(
       from: params[:nom] + "<" + params[:email] + ">",
       to: 'P.lucas021@gmail.com',
-      subject: "Vous avez un message de " + params[:nom],
+      subject: "Vous avez un message de: " + params[:nom],
       body: params[:message],
       )
 	erb :profil_fr

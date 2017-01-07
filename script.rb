@@ -46,7 +46,14 @@ def assonance mot
 		File.open(dico, "r:UTF-8").each_line do |line|
 			x=0 
 			while x < line.length
-				if (consonne line[x].to_s) && (voyelle line[x+1].to_s)
+				if (consonne line[x].to_s) && (voyelle line[x+1].to_s) && (voyelle line[x+2].to_s)
+					match = line[x].to_s + line[x+1].to_s + line[x+2].to_s
+					if match == mot
+						File.open output, 'a' do |f| 
+							f.puts line.capitalize 
+						end 
+					end 
+				elsif (consonne line[x].to_s) && (voyelle line[x+1].to_s) 
 					match = line[x].to_s + line[x+1].to_s 
 					if match == mot
 						File.open output, 'a' do |f| 
@@ -65,7 +72,12 @@ def assonance mot
 	mot = mot.downcase 
 	while (i < mot.length) && (count < 5)
 			y = mot.length
-		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
+		if (consonne mot[i].to_s) && (voyelle mot[i+1].to_s) && (voyelle mot[i+2].to_s)
+			combi = mot[i].to_s + mot[i+1].to_s + mot[i+2].to_s
+			puts combi
+			count = count+1
+			rimeasso("dico_final.txt", combi)
+		elsif (consonne mot[i].to_s) && (voyelle mot[i+1].to_s)
 			combi = mot[i].to_s + mot[i+1].to_s
 			puts combi
 			count = count+1
