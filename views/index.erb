@@ -67,9 +67,9 @@
 
 			<!-- One -->
 				<section id="dictionnaire" class="wrapper style1">
-					<div class="container">
+					<div class="container" itemscope itemtype="http://schema.org/DataCatalog">
 						<header class="major">
-							<h3>Dictionnaire de rimes</h3>
+							<h3 itemprop="name">Dictionnaire de rimes</h3>
 								<form method="post" action="/#dictionnaire">
 									<div class="row uniform 50%">
 										<div class="12u$">
@@ -84,9 +84,9 @@
 						</header>
 
 						<!-- Content -->
-								<div itemscope itemtype="http://schema.org/DataCatalog">
 								
-								<h4 itemprop="name"><%=@mot%></h4>
+								
+								<h4><%=@mot%></h4>
 								<ul class="icons">
 								<% if @asso1.empty?%>
 								
@@ -135,7 +135,7 @@
 							</ul>
 							 </center>
 								<center><a href="/a-propos"> Comment ça marche ? </a></center>
-							</div>
+							
 							
 
 					</div>
