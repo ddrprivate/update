@@ -67,9 +67,9 @@
 
 			<!-- One -->
 				<section id="dictionnaire" class="wrapper style1">
-					<div class="container" itemscope itemtype="http://schema.org/DataCatalog">
+					<div class="container">
 						<header class="major">
-							<h3 itemprop="name">Dictionnaire de rimes</h3>
+							<h3>Dictionnaire de rimes</h3>
 								<form method="post" action="/#dictionnaire">
 									<div class="row uniform 50%">
 										<div class="12u$">
@@ -92,38 +92,38 @@
 								
 								<%else%>
 								
-								<h5 itemprop="dataset"><%=@asso1.first%></h5>
+								<h5><%=@asso1.first%></h5>
 								<%@asso1=@asso1.drop(1) unless @asso1.empty?%>
 								<%@asso1.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75" itemprop="url"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								&nbsp
 								<h5></h5>
-								<h5 itemprop="dataset"><%=@asso2.first%></h5>
+								<h5><%=@asso2.first%></h5>
 								<%@asso2=@asso2.drop(1) unless @asso2.empty?%>
 								<%@asso2.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75" itemprop="url"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								&nbsp
 								<h5></h5>
-								<h5 itemprop="dataset"><%=@asso3.first%></h5>
+								<h5><%=@asso3.first%></h5>
 								<%@asso3=@asso3.drop(1) unless @asso3.empty?%>
 								<%@asso3.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75" itemprop="url"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								<h5></h5>
 								&nbsp
-								<h5 itemprop="dataset"><%=@asso4.first%></h5>
+								<h5><%=@asso4.first%></h5>
 								<%@asso4=@asso4.drop(1) unless @asso4.empty?%>
 								<%@asso4.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75" itemprop="url"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								<h5></h5>
 								&nbsp
-								<h5 itemprop="dataset"><%=@asso5.first%></h5>
+								<h5><%=@asso5.first%></h5>
 								<%@asso5=@asso5.drop(1) unless @asso5.empty?%>
 								<%@asso5.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75" itemprop="url"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								</ul>
 								<%end%>

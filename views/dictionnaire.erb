@@ -61,7 +61,8 @@
 						</header>
 
 						<!-- Content -->
-								<h4><%=@mot%></h4>
+						<div itemscope itemtype="http://schema.org/DataCatalog">
+								<h4 itemprop="name"><%=@mot%></h4>
 								<ul class="icons">
 								<h5><%=@asso1.first%></h5>
 								
@@ -99,7 +100,7 @@
 								<% end %>
 								</ul>
 								<center><a href="/a-propos"> Comment ça marche ? </a></center>
-							
+						</div>	
 					</div>
 				</div>
 					
