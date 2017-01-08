@@ -171,6 +171,7 @@ def phonetique mot
 					if ((an line2) && (an mot)) || ((un line2) && (un mot)) || ((on line2) && (on mot)) || ((ou line2) && (ou mot)) || ((eu line2) && (eu mot)) || ((au line2) && (au mot)) || ((ai line2) && (ai mot)) || ((a line2) && (a mot))
 						ex1 = line[x].to_s.downcase + line[x+1].to_s.downcase
 						ex3 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase
+						y = line.length
 						ey1 = line[y-1]
 						File.open output, 'a' do |f| 
 							f.puts line.capitalize unless ((ai line[x]) && ((ex3 == "eur" ) || (ey1 == "e") || (ex1 == "ea") || (ex1 == "eu") || (ex1 == "eo"))) || ((an line2) && (voyelle line[x+2].to_s))
