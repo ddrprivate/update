@@ -451,10 +451,6 @@ post '/contact' do
     erb :contact 
 end
 
-get '/envoye' do
-	erb :envoye
-end 
-
 get '/lucas_pedroza_fr' do
 	@mail = 0
 	erb :profil_fr
