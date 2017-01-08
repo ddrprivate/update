@@ -211,7 +211,7 @@ def phonetique mot
 				mot2= mot[i].to_s + mot[i+1].to_s
 				mot3= mot[i].to_s + mot[i+1].to_s + mot[i+2].to_s
 				y = mot.length
-				ey1 = line[y-1]
+				ey1 = mot[y-1]
 				if (an mot3) || (un mot3) || (eu mot3)
 					combi = mot3
 					
@@ -227,7 +227,7 @@ def phonetique mot
 						exist.push(combi) unless exist.include?(combi)
 						i =i+2
 					else 
-						if (a mot[i]) || ((ai mot[i]) && (ey1!="e")) || (i mot[i]) || (au mot[i]) || (u mot[i])
+						if (a mot[i]) || ((ai mot[i]) && (ey1 != "e")) || (i mot[i]) || (au mot[i]) || (u mot[i])
 							combi = mot[i]
 							puts combi unless exist.include?(combi)
 							rimephono("rime.txt", combi) unless exist.include?(combi) 
