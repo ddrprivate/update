@@ -226,9 +226,10 @@ def phonetique mot
 						i =i+2
 					else 
 						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
+							y = mot.length
 							combi = mot[i]
 							puts combi unless exist.include?(combi)
-							rimephono("rime.txt", combi) unless exist.include?(combi)
+							rimephono("rime.txt", combi) unless exist.include?(combi) && (mot[i]=="e" && mot[y-1]=="e")
 							exist.push(combi) unless exist.include?(combi)
 							i =i+1
 						else
