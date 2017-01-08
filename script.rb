@@ -110,7 +110,7 @@ def phonetique mot
 		end
 	end
 	def ai x
-		if x=="ai" || x=="er" || x=="ez" || x=="é" || x=="è" || x=="ê"
+		if x=="ai" || x=="er" || x=="ez" || x=="é" || x=="è" || x=="ê" || x=="e"
 			return true
 		end
 	end
@@ -169,9 +169,11 @@ def phonetique mot
 						x=x+3
 				else
 					if ((an line2) && (an mot)) || ((un line2) && (un mot)) || ((on line2) && (on mot)) || ((ou line2) && (ou mot)) || ((eu line2) && (eu mot)) || ((au line2) && (au mot)) || ((ai line2) && (ai mot)) || ((a line2) && (a mot))
+						ex1 = line[x].to_s.downcase + line[x+1].to_s.downcase
 						ex3 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase
+						ey1 = line[y-1]
 						File.open output, 'a' do |f| 
-							f.puts line.capitalize unless ((ai line[x]) && (ex3 == "eur" )) || ((an line2) && (voyelle line[x+2].to_s))
+							f.puts line.capitalize unless ((ai line[x]) && ((ex3 == "eur" ) || (ey1 == "e") || (ex1 == "ea") || (ex1 == "eu") || (ex1 == "eo"))) || ((an line2) && (voyelle line[x+2].to_s))
 						end 
 						x=x+2
 					else 
@@ -187,7 +189,7 @@ def phonetique mot
 									ey2 = line[y-2] + line[y-1]
 									ey3 = line[y-3] + line[y-2] + line[y-1]
 									ey4 = line[y-4] + line[y-3] + line[y-2] + line[y-1]
-									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && (ex3 == "eur" )) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion") || (ey4 == "ions")))
+									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && ((ex3 == "eur" ) || (ey1 == "e") || (ex1 == "ea") || (ex1 == "eu") || (ex1 == "eo"))) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an" && (consonne line[x+2])) || ex1 == "au")) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion") || (ey4 == "ions")))
 								end  
 								x=x+1
 						else
