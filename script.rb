@@ -170,7 +170,7 @@ def phonetique mot
 				else
 					if ((an line2) && (an mot)) || ((un line2) && (un mot)) || ((on line2) && (on mot)) || ((ou line2) && (ou mot)) || ((eu line2) && (eu mot)) || ((au line2) && (au mot)) || ((ai line2) && (ai mot)) || ((a line2) && (a mot))
 						File.open output, 'a' do |f| 
-							f.puts line.capitalize unless ((ai line[x]) && (ex3 == "eur" )) || ((an line2) && (voyelle line[x+2].to_s))
+							f.puts line.capitalize unless ((an line2) && (voyelle line[x+2].to_s))
 						end 
 						x=x+2
 					else 
