@@ -442,7 +442,7 @@ end
 post '/contact' do
 	Pony.mail(
       from: params[:nom] + "<" + params[:email] + ">",
-      to: 'P.lucas021@gmail.com',
+      to: 'contact@dealerderimes.fr',
       subject: "Vous avez un message de " + params[:nom],
       body: params[:message],
       )
