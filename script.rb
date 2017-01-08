@@ -436,17 +436,19 @@ get '/inscription' do
 end 
 
 get '/contact' do
+	@mail = 0
 	erb :contact 
 end 
 
 post '/contact' do
+	@mail = 1
 	Pony.mail(
       from: params[:nom] + "<" + params[:email] + ">",
       to: 'contact@dealerderimes.fr',
       subject: "Vous avez un message de " + params[:nom],
       body: params[:message],
       )
-    redirect '/envoye' 
+    erb :contact 
 end
 
 get '/envoye' do

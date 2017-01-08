@@ -56,6 +56,7 @@
 					<div class="container">
 						<header class="major">
 							 <section>
+							 <%if @mail==0%>
 								<h3 itemprop="name">Contactez nous par e-mail</h3>
 								<form method="post" action="/contact">
 									<div class="row uniform 50%">
@@ -76,6 +77,10 @@
 										</div>
 									</div>
 								</form>
+								<%else%>
+							<center><p><strong>Dealer de rimes vous remercie pour votre message</strong></p></center>
+							<center><p>Retourner sur le<a href="/"> dictionnaire de rimes</a></p></center>
+							<%end%>
 								<ul class="icons">
 								<li><a itemprop="url" href="/lucas_pedroza_fr" class="button">Mon Profil / CV</a></li>
 								<li><a itemprop="url" href="/lucas_pedroza_en" class="button">My Profile / CV</a></li>
