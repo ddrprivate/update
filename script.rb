@@ -221,16 +221,16 @@ def phonetique mot
 					i =i+3
 				else
 					if (an mot2) || (un mot2) || (on mot2) || (ou mot2) || (eu mot2) || (au mot2) || (ai mot2) || (a mot2)
-						combi = mot2 unless (mot2 == "an" && (voyelle mot[i+2]))
+						combi = mot2 unless ((mot2 == "an" && (voyelle mot[i+2])) || ((ai mot2) && (ey1=="e")))
 						puts combi unless exist.include?(combi)
 						rimephono("rime.txt", combi) unless exist.include?(combi)
 						exist.push(combi) unless exist.include?(combi)
 						i =i+2
 					else 
-						if (a mot[i]) || ((ai mot[i]) && (ey1 != "e")) || (i mot[i]) || (au mot[i]) || (u mot[i])
-							combi = mot[i]
+						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
+							combi = mot[i] unless (ai mot[i]) && (ey1=="e")
 							puts combi unless exist.include?(combi)
-							rimephono("rime.txt", combi) unless exist.include?(combi) 
+							rimephono("rime.txt", combi) unless exist.include?(combi)
 							exist.push(combi) unless exist.include?(combi)
 							i =i+1
 						else
