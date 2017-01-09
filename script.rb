@@ -255,7 +255,7 @@ end
 
 def classage mot 
 	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î"
+	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
 			return true 
 		else
 			return false 
