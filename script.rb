@@ -554,11 +554,7 @@ post '/' do
 	@asso4 = Array.new
 	@asso4 = []
 	@asso5 = Array.new 
-	@asso5 = []
-	if params[:mot] == ""
-		params[:mot] = @mot
-	end
-	
+	@asso5 = []	
 	@mot = params[:mot].capitalize
 	
 	assonance params[:mot].downcase
