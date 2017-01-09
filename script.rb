@@ -591,7 +591,7 @@ get '/dictionnaire/:rime' do
 	@asso5 = []
 	@mot = params['rime'].capitalize
 	assonance params['rime'].downcase
-	if params[:rimeo] == "1"
+	if @radio == 1
 		phonetique2 params['rime'].downcase
 		@radio = 1
 		
