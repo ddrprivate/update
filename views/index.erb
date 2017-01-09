@@ -121,7 +121,7 @@
 						<!-- Content -->
 								
 								
-								<h4><%=@mot%></h4>
+								<h4><%=@mot% unless @mot==0></h4>
 								<ul class="icons">
 								<% if @asso1.empty?%>
 								
