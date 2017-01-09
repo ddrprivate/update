@@ -521,6 +521,7 @@ end
 
 
 get '/' do
+	@mot = 0
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
 	@rimedoc2 = File.open("rime2.txt", "w+")

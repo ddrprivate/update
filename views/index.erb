@@ -93,7 +93,12 @@
 								<form method="post" action="/#dictionnaire">
 									<div class="row uniform 50%">
 										<div class="12u$">
+											<% if @mot == 0%>
 											<input type="text" name="mot" id="name" value="" placeholder="Entrez un mot" />
+											<% else%>
+											<input type="text" name="mot" id="name" value="" placeholder="<%=@mot%>" />
+											<% end %>
+											
 										</div>
 										
 										<div class="6u 12u$(medium)">
