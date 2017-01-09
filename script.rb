@@ -555,7 +555,7 @@ post '/' do
 	@asso4 = []
 	@asso5 = Array.new 
 	@asso5 = []
-	if params[:mot] == nil 
+	if params[:mot] == ""
 		params[:mot] = @mot
 	end
 	
