@@ -575,6 +575,7 @@ post '/' do
 end
 
 get '/dictionnaire/:rime' do
+	@radio = 1
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
 	@rimedoc2 = File.open("rime2.txt", "w+")
@@ -591,11 +592,11 @@ get '/dictionnaire/:rime' do
 	@mot = params['rime'].capitalize
 	assonance params['rime'].downcase
 	if params[:rimeo] == "1"
-		phonetique2 params[:mot].downcase
+		phonetique2 params['rime'].downcase
 		@radio = 1
 		
 	else
-		phonetique params[:mot].downcase
+		phonetique params['rime'].downcase
 		@radio = 0
 	end
 	nodouble("rime2.txt", "rime_final.txt")
