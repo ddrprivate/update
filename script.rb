@@ -535,6 +535,7 @@ get '/' do
 	@asso4 = []
 	@asso5 = Array.new 
 	@asso5 = []
+	@radio = 1
 	
 	erb :index
 	
@@ -555,7 +556,6 @@ post '/' do
 	@asso4 = []
 	@asso5 = Array.new 
 	@asso5 = []	
-	@radio = 1
 	@mot = params[:mot].capitalize
 	
 	assonance params[:mot].downcase
