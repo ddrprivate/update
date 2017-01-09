@@ -555,7 +555,12 @@ post '/' do
 	@asso4 = []
 	@asso5 = Array.new 
 	@asso5 = []
+	if params[:mot] == nil 
+		params[:mot] = @mot
+	end
+	
 	@mot = params[:mot].capitalize
+	
 	assonance params[:mot].downcase
 	if params[:rimeo] == "1"
 		phonetique2 params[:mot].downcase
