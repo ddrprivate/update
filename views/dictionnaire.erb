@@ -59,7 +59,7 @@
 								<form method="post" action="/#dictionnaire">
 									<div class="row uniform 50%">
 										<div class="12u$">
-											<input type="text" name="mot" id="name" value="" placeholder="<%=@mot%>" />
+											<input type="text" name="mot" id="name" value="<%=@mot%>" placeholder="<%=@mot%>" />
 										</div>
 										
 										<div class="6u 12u$(medium)">
@@ -70,7 +70,24 @@
 											<input type="radio" id="rimeo_pauvre" name="rimeo" value="0">
 											<label for="rimeo_pauvre">Rimes pauvres</label>
 										</div>
-										
+										<% if @radio == 1 %>
+										<div class="6u 12u$(medium)">
+											<input type="radio" id="rimeo_riche" name="rimeo" value="1" checked>
+											<label for="rimeo_riche">Rimes riches</label>
+										</div>
+										<div class="6u 12u$(medium)">
+											<input type="radio" id="rimeo_pauvre" name="rimeo" value="0">
+											<label for="rimeo_pauvre">Rimes pauvres</label>
+										</div>
+										<% else %>
+										<input type="radio" id="rimeo_riche" name="rimeo" value="1">
+											<label for="rimeo_riche">Rimes riches</label>
+										</div>
+										<div class="6u 12u$(medium)">
+											<input type="radio" id="rimeo_pauvre" name="rimeo" value="0" checked>
+											<label for="rimeo_pauvre">Rimes pauvres</label>
+										</div>
+										<% end %>
 										<div class="12u$">
 											<ul class="actions">
 												<li><input type="submit" value="Rime" class="special" /></li>

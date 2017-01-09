@@ -555,14 +555,17 @@ post '/' do
 	@asso4 = []
 	@asso5 = Array.new 
 	@asso5 = []	
+	@radio = 1
 	@mot = params[:mot].capitalize
 	
 	assonance params[:mot].downcase
 	if params[:rimeo] == "1"
 		phonetique2 params[:mot].downcase
+		@radio = 1
 		
 	else
 		phonetique params[:mot].downcase
+		@radio = 0
 	end
 	
 	nodouble("rime2.txt", "rime_final.txt")
@@ -587,7 +590,14 @@ get '/dictionnaire/:rime' do
 	@asso5 = []
 	@mot = params['rime'].capitalize
 	assonance params['rime'].downcase
-	phonetique2 params['rime'].downcase
+	if params[:rimeo] == "1"
+		phonetique2 params[:mot].downcase
+		@radio = 1
+		
+	else
+		phonetique params[:mot].downcase
+		@radio = 0
+	end
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	classage params['rime'].downcase 

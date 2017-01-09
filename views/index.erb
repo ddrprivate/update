@@ -101,6 +101,7 @@
 											
 										</div>
 										
+										<% if @radio == 1 %>
 										<div class="6u 12u$(medium)">
 											<input type="radio" id="rimeo_riche" name="rimeo" value="1" checked>
 											<label for="rimeo_riche">Rimes riches</label>
@@ -109,7 +110,15 @@
 											<input type="radio" id="rimeo_pauvre" name="rimeo" value="0">
 											<label for="rimeo_pauvre">Rimes pauvres</label>
 										</div>
-										
+										<% else %>
+										<input type="radio" id="rimeo_riche" name="rimeo" value="1">
+											<label for="rimeo_riche">Rimes riches</label>
+										</div>
+										<div class="6u 12u$(medium)">
+											<input type="radio" id="rimeo_pauvre" name="rimeo" value="0" checked>
+											<label for="rimeo_pauvre">Rimes pauvres</label>
+										</div>
+										<% end %>
 										<div class="12u$">
 											<ul class="actions">
 												<li><input type="submit" value="Rime" class="special" /></li>
