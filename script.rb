@@ -766,7 +766,7 @@ get '/dictionnaire/:rime' do
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	if @rimedoc.empty?
-		phonetique params[:mot].downcase
+		phonetique params['rime'].downcase
 		nodouble("rime2.txt", "rime_final.txt")
 	    @rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	end 
