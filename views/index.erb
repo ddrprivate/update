@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Dealer de Rimes | Trouvez l'inspiration, écrivez vos textes</title>
+		<title>Dealer de Rimes | Un dictionnaire pour le Rap Français </title>
 		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -76,7 +76,7 @@
 					<div class="content">
 						<header>
 							<h2 itemprop="name">Dealer de Rimes</h2>
-							<p><strong>Trouvez l’inspiration avec notre dictionnaire de rimes.</strong><br>Il contient les mots et expressions les plus utilisés du rap français.<br><br>
+							<p><strong>Trouvez l’inspiration avec notre dictionnaire de rimes et allitérations.</strong><br>Il contient les mots et expressions les plus utilisés du Rap Français.<br><br>
 							   Entrez un mot et notre algorithme vous proposera les meilleurs rimes<br> en fonction des <a href="/a-propos">allitérations</a> trouvées.</p>
 						</header>
 						<span class="image" itemprop="image"><img src="images/dictionnaire_de_rimes_logo.jpg" alt="dealerderimes logo" style="max-width: 100%; height: auto;"/></span>
@@ -88,7 +88,7 @@
 				<section id="dictionnaire" class="wrapper style1">
 					<div class="container">
 						<header class="major">
-							<h3>Dictionnaire de rimes</h3>
+							<h3>Dictionnaire de rimes et allitérations</h3>
 								<form method="post" action="/#dictionnaire">
 									<div class="row uniform 50%">
 										<div class="12u$">
@@ -129,8 +129,9 @@
 
 						<!-- Content -->
 								
-								
-								<h4><%=@mot unless @mot==0 %></h4>
+								<% if @mot!=0 %>
+								<h4><%=@mot%></h4>
+								<%end%>
 								<ul class="icons">
 								<% if @asso1.empty?%>
 								
@@ -178,7 +179,7 @@
 							<li>Rimes avec:<a href="/dictionnaire/qualité" itemprop="url"> Qualité</a></li>  
 							</ul>
 							 </center>
-								<center itemprop="about"><a href="/a-propos" itemprop="url"> Comment ça marche ? </a></center>
+								<center itemprop="about"><a href="/a-propos" itemprop="url"> Comment notre dictionnaire de rimes fonctionne ? </a></center>
 							
 							
 
