@@ -129,14 +129,14 @@
 
 						<!-- Content -->
 								
-								<% if @mot!=0 %>
-								<h4><%=@mot%></h4>
-								<%end%>
+								
+								
+							
 								<ul class="icons">
 								<% if @asso1.empty?%>
 								
 								<%else%>
-								
+								<h4><%=@mot%></h4>
 								<h5><%=@asso1.first%></h5>
 								<%@asso1=@asso1.drop(1) unless @asso1.empty?%>
 								<%@asso1.each do |x|%>
@@ -179,7 +179,7 @@
 							<li>Rimes avec:<a href="/dictionnaire/qualité" itemprop="url"> Qualité</a></li>  
 							</ul>
 							 </center>
-								<center itemprop="about"><a href="/a-propos" itemprop="url"> Comment Dealer de rimes fonctionne ? </a></center>
+								<center itemprop="about"><a href="/a-propos" itemprop="url"> Comment ça marche ? </a></center>
 							
 							
 
