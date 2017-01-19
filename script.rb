@@ -87,8 +87,6 @@ def assonance mot
 		
 	end 
 end
-
-
 def phonetique mot
 	def voyelle v
 	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
@@ -229,7 +227,7 @@ def phonetique mot
 						i =i+2
 					else 
 						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
-							combi = mot[i] unless (ai mot[i]) && (ey1=="e")
+							combi = mot[i] unless (mot[i] == "e") && (ey1=="e")
 							puts combi unless exist.include?(combi)
 							rimephono("rime.txt", combi) unless exist.include?(combi)
 							exist.push(combi) unless exist.include?(combi)
@@ -242,164 +240,68 @@ def phonetique mot
 	end 
 
 end
-
-def phonetique2 mot
-	def voyelle v
-	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
-			return true 
-		else
-			return false 
-		end 
-	end 
-
-	def consonne c 
-	 if c=="b" || c=="c" || c=="d" || c=="f" || c=="g" || c=="h" || c=="j" || c=="k" || c=="l" || c=="m" || c=="n" || c=="p" || c=="q" || c=="r" || c=="s" || c=="t" || c=="v"|| c=="w" || c=="x" || c=="z"
-			return true
-		else
-			return false 
-		end 
-	end 
-	def a x
-		if x=="a" || x=="oi"
-			return true 
-		end
-	end
-	def ai x
-		if x=="ai" || x=="er" || x=="ez" || x=="é" || x=="è" || x=="ê" || x=="e"
-			return true
-		end
-	end
-	def i x
-		if x=="i" || x=="î"
-			return true 
-		end
-	end
-	def eu x
-		if x=="eu" || x=="oeu"
-			return true
-		end
-	end
-	def au x
-		if x=="au" || x=="o" || x=="ô"
-			return true 
-		end
-	end
-	def u x
-		if x=="u" || x=="û"
-			return true 
-		end
-	end
-	def ou x
-		if x=="ou" || x=="oo"
-			return true
-		end
-	end
-	def an x
-		if x=="an" || x=="en" || x=="aon"
-			return true
-		end
-	end
-	def un x
-		if x=="in" || x=="ien" || x=="ain" || x=="ein" || x=="un"
-			return true
-		end
-	end
-	def on x
-		if x=="on"
-			return true
-		end
-	end
+def rimesr mot
+	l = mot.length
 	
-	def rimephono(dico, mot)
-		output = "rime2.txt"
-		File.open(dico, "r:UTF-8").each_line do |line|
-			x=0 
-			while x < line.length 
-				line2= line[x].to_s + line[x+1].to_s
-				line3= line[x].to_s + line[x+1].to_s + line[x+2].to_s
-				if ((an line3) && (an mot)) || ((un line3) && (un mot)) || ((eu line3) && (eu mot))
-						File.open output, 'a' do |f| 
-							f.puts line.capitalize unless ((an line3) && (voyelle line[x+2].to_s))
-						end
-						x=x+3
-				else
-					if ((an line2) && (an mot)) || ((un line2) && (un mot)) || ((on line2) && (on mot)) || ((ou line2) && (ou mot)) || ((eu line2) && (eu mot)) || ((au line2) && (au mot)) || ((ai line2) && (ai mot)) || ((a line2) && (a mot))
-						ex1 = line[x].to_s.downcase + line[x+1].to_s.downcase
-						ex3 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase
-						y = line.length
-						ey1 = line[y-1]
-						File.open output, 'a' do |f| 
-							f.puts line.capitalize unless ((ai line[x]) && ((ex3 == "eur" ) || (ey1 == "e") || (ex1 == "ea") || (ex1 == "eu") || (ex1 == "eo") || (ex1 == "en"))) || ((an line2) && (voyelle line[x+2].to_s))
-						end 
-						x=x+2
-					else 
-						if ((a line[x]) && (a mot)) || ((i line[x]) && (i mot)) || ((au line[x]) && (au mot)) || ((u line[x]) && (u mot)) || ((ai line[x]) && (ai mot)) 
-								File.open output, 'a' do |f| 
-									ex2 = line[x-1].to_s.downcase + line[x].to_s.downcase
-									ex3 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase
-									ex1 = line[x].to_s.downcase + line[x+1].to_s.downcase
-									ex4 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase + line[x+3].to_s.downcase
-									ex5 = line[x].to_s.downcase + line[x+1].to_s.downcase + line[x+2].to_s.downcase + line[x+3].to_s.downcase + line[x+4].to_s.downcase
-									y = line.length
-									ey1 = line[y-1]
-									ey2 = line[y-2] + line[y-1]
-									ey3 = line[y-3] + line[y-2] + line[y-1]
-									ey4 = line[y-4] + line[y-3] + line[y-2] + line[y-1]
-									f.puts line.capitalize unless ((u line[x]) && (ex2 == "ou" || ex2 == "au" || ex2 == "eu" || ex2 == "qu")) || ((ai line[x]) && ((ex3 == "eur" ) || (ey1 == "e") || (ex1 == "ea") || (ex1 == "eu") || (ex1 == "eo") || (ex1 == "en"))) || ((au line[x]) && (ex3 == "omb" || ex3 == "omp" || ex1 == "ou" || ex1 == "oi" || ey2 == "on")) || ((a line[x]) && ( ((ex1 == "ai") && (ex5 != "aille")) || (ex1 == "an") || (ex1 == "au"))) || ((i line[x]) && ((ex2 == "oi") || (ex2 == "ai") || (ey2 == "in") || (ey3 == "ion") || (ey4 == "ions")))
-								end  
-								x=x+1
-						else
-							x=x+1
-							
-						end
-					end
-				end
-			end 	
+	out8 = mot[l-8].to_s + mot[l-7].to_s + mot[l-6].to_s + mot[l-5].to_s + mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 8
+	out7 = mot[l-7].to_s + mot[l-6].to_s + mot[l-5].to_s + mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 7
+	out6 = mot[l-6].to_s + mot[l-5].to_s + mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 6
+	out5 = mot[l-5].to_s + mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 5
+	out4 = mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 4
+	out3 = mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 3
+	puts out8
+	puts out7
+	puts out6
+	puts out5
+	puts out4
+	puts out3
+	output = "rime2.txt"
+	File.open("dico_final.txt", "r:UTF-8").each_line do |line|
+		l = line.length
+		line8 = line[l-9].to_s + line[l-8].to_s + line[l-7].to_s + line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 8
+		line7 = line[l-8].to_s + line[l-7].to_s + line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 7
+		line6 = line[l-7].to_s + line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 6
+		line5 = line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 5
+		line4 = line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s unless l < 4
+		line3 = line[l-4].to_s + line[l-3].to_s + line[l-2].to_s unless l < 3
+		if (line8 == out8) && (line8 != nil )
+			File.open output, 'a' do |f|
+								puts "8"
+								puts line8
+								puts out8
+								f.puts line.capitalize 
+							end
+		elsif line7 == out7 && (line7 != nil )
+			File.open output, 'a' do |f| 
+								puts "7"
+								f.puts line.capitalize 
+							end
+		elsif line6 == out6 && (line6 != nil )
+			File.open output, 'a' do |f| 
+								puts "6"
+								f.puts line.capitalize 
+							end
+		elsif line5 == out5 && (line5 != nil )
+			File.open output, 'a' do |f| 
+								puts "5"
+								f.puts line.capitalize 
+							end
+		elsif line4 == out4 && (line4 != nil )
+			File.open output, 'a' do |f| 
+								puts "4"
+								f.puts line.capitalize 
+							end
+		elsif line3 == out3 && (line3 != nil )
+			File.open output, 'a' do |f| 
+								puts "3"
+								f.puts line.capitalize 
+							end
 		end
-	end
-	
-	i=0
-	exist = Array.new
-	exist = []
-	lenght = mot.length
-	puts lenght
-	i = (lenght/2).round
-	puts i
-	while i < lenght
-				mot2= mot[i].to_s + mot[i+1].to_s
-				mot3= mot[i].to_s + mot[i+1].to_s + mot[i+2].to_s
-				y = mot.length
-				ey1 = mot[y-1]
-				if (an mot3) || (un mot3) || (eu mot3)
-					combi = mot3
-					puts combi unless exist.include?(combi)
-					rimephono("rime.txt", combi) unless exist.include?(combi)
-					exist.push(combi) unless exist.include?(combi)
-					i =i+3
-				else
-					if (an mot2) || (un mot2) || (on mot2) || (ou mot2) || (eu mot2) || (au mot2) || (ai mot2) || (a mot2)
-						combi = mot2 unless ((mot2 == "an" && (voyelle mot[i+2])) || ((ai mot2) && (ey1=="e")))
-						puts combi unless exist.include?(combi)
-						rimephono("rime.txt", combi) unless exist.include?(combi)
-						exist.push(combi) unless exist.include?(combi)
-						i =i+2
-					else 
-						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
-							combi = mot[i] unless (ai mot[i]) && (ey1=="e")
-							puts combi unless exist.include?(combi)
-							rimephono("rime.txt", combi) unless exist.include?(combi)
-							exist.push(combi) unless exist.include?(combi)
-							i =i+1
-						else
-							i =i+1
-						end
-					end 
-				end
+		
 	end 
-
 end
 
-def phonetique3 mot
+def rimesp mot
 	def voyelle v
 	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
 			return true 
@@ -716,19 +618,19 @@ post '/' do
 	@asso5 = []	
 	@mot = params[:mot].capitalize
 	
-	assonance params[:mot].downcase
 	if params[:rimeo] == "1"
-		phonetique3 params[:mot].downcase
+		rimesr params[:mot].downcase
 		@radio = 1
 		
 	else
-		phonetique2 params[:mot].downcase
+		assonance params[:mot].downcase
+		rimesp params[:mot].downcase
 		@radio = 0
 	end
 	
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
-	if @rimedoc.empty?
+	if @rimedoc.empty? && @radio == 0
 		phonetique params[:mot].downcase
 		nodouble("rime2.txt", "rime_final.txt")
 	    @rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
@@ -754,18 +656,19 @@ get '/dictionnaire/:rime' do
 	@asso5 = Array.new 
 	@asso5 = []
 	@mot = params['rime'].capitalize
-	assonance params['rime'].downcase
+	
 	if @radio == 1
-		phonetique3 params['rime'].downcase
+		rimesr params['rime'].downcase
 		@radio = 1
 		
 	else
-		phonetique2 params['rime'].downcase
+		assonance params['rime'].downcase
+		rimesp params['rime'].downcase
 		@radio = 0
 	end
 	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
-	if @rimedoc.empty?
+	if @rimedoc.empty? && @radio == 0
 		phonetique params['rime'].downcase
 		nodouble("rime2.txt", "rime_final.txt")
 	    @rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
@@ -829,4 +732,3 @@ post '/lucas_pedroza_en' do
       )
 	erb :profil_en
 end
-
