@@ -249,12 +249,6 @@ def rimesr mot
 	out5 = mot[l-5].to_s + mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 5
 	out4 = mot[l-4].to_s + mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 4
 	out3 = mot[l-3].to_s + mot[l-2].to_s + mot[l-1].to_s unless l < 3
-	puts out8
-	puts out7
-	puts out6
-	puts out5
-	puts out4
-	puts out3
 	output = "rime2.txt"
 	File.open("dico_final.txt", "r:UTF-8").each_line do |line|
 		l = line.length
@@ -263,42 +257,39 @@ def rimesr mot
 		line6 = line[l-7].to_s + line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 6
 		line5 = line[l-6].to_s + line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s + line[l-1].to_s unless l < 5
 		line4 = line[l-5].to_s + line[l-4].to_s + line[l-3].to_s + line[l-2].to_s unless l < 4
-		line3 = line[l-4].to_s + line[l-3].to_s + line[l-2].to_s unless l < 3
+		
 		if (line8 == out8) && (line8 != nil )
 			File.open output, 'a' do |f|
-								puts "8"
-								puts line8
-								puts out8
 								f.puts line.capitalize 
 							end
 		elsif line7 == out7 && (line7 != nil )
 			File.open output, 'a' do |f| 
-								puts "7"
 								f.puts line.capitalize 
 							end
 		elsif line6 == out6 && (line6 != nil )
 			File.open output, 'a' do |f| 
-								puts "6"
 								f.puts line.capitalize 
 							end
 		elsif line5 == out5 && (line5 != nil )
 			File.open output, 'a' do |f| 
-								puts "5"
 								f.puts line.capitalize 
 							end
 		elsif line4 == out4 && (line4 != nil )
 			File.open output, 'a' do |f| 
-								puts "4"
-								f.puts line.capitalize 
-							end
-		elsif line3 == out3 && (line3 != nil )
-			File.open output, 'a' do |f| 
-								puts "3"
 								f.puts line.capitalize 
 							end
 		end
 		
 	end 
+	File.open("dico_final.txt", "r:UTF-8").each_line do |line|
+		l = line.length
+		line3 = line[l-4].to_s + line[l-3].to_s + line[l-2].to_s unless l < 3
+		if line3 == out3 && (line3 != nil )
+			File.open output, 'a' do |f| 
+								f.puts line.capitalize 
+							end
+		end
+	end
 end
 
 def rimesp mot
