@@ -2538,6 +2538,20 @@
 					border-top: 0;
 					padding-top: 0;
 				}
+		ul.album {
+			cursor: default;
+			list-style: none;
+			padding-left: 0;
+		}
+
+			ul.album li {
+				display: inline-block;
+				height: 1.2em;
+				line-height: 1.2em;
+				padding: 0 2em;
+				font-size: 1.2em;
+			}
+				
 
 		ul.icons {
 			cursor: default;

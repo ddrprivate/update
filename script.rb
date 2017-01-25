@@ -723,3 +723,7 @@ post '/lucas_pedroza_en' do
       )
 	erb :profil_en
 end
+
+get '/nekfeu' do
+	erb :nekfeu
+end
