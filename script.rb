@@ -727,3 +727,7 @@ end
 get '/nekfeu' do
 	erb :nekfeu
 end
+
+get '/kaaris' do
+	erb :kaaris
+end 
