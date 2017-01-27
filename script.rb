@@ -87,7 +87,7 @@ def assonance mot
 		
 	end 
 end
-def phonetique mot
+def phonetique mot, dic
 	def voyelle v
 	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
 			return true 
@@ -155,7 +155,7 @@ def phonetique mot
 	end
 	
 	def rimephono(dico, mot)
-		output = "rime2.txt"
+		output = "rime3.txt"
 		File.open(dico, "r:UTF-8").each_line do |line|
 			x=0 
 			while x < line.length 
@@ -215,21 +215,21 @@ def phonetique mot
 					combi = mot3
 					
 					puts combi unless exist.include?(combi)
-					rimephono("rime.txt", combi) unless exist.include?(combi)
+					rimephono(dic, combi) unless exist.include?(combi)
 					exist.push(combi) unless exist.include?(combi)
 					i =i+3
 				else
 					if (an mot2) || (un mot2) || (on mot2) || (ou mot2) || (eu mot2) || (au mot2) || (ai mot2) || (a mot2)
 						combi = mot2 unless ((mot2 == "an" && (voyelle mot[i+2])) || ((ai mot2) && (ey1=="e")))
 						puts combi unless exist.include?(combi)
-						rimephono("rime.txt", combi) unless exist.include?(combi)
+						rimephono(dic, combi) unless exist.include?(combi)
 						exist.push(combi) unless exist.include?(combi)
 						i =i+2
 					else 
 						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
 							combi = mot[i] unless (mot[i] == "e") && (ey1=="e")
 							puts combi unless exist.include?(combi)
-							rimephono("rime.txt", combi) unless exist.include?(combi)
+							rimephono(dic, combi) unless exist.include?(combi)
 							exist.push(combi) unless exist.include?(combi)
 							i =i+1
 						else
@@ -292,7 +292,7 @@ def rimesr mot
 	end
 end
 
-def rimesp mot
+def rimesp mot, dic
 	def voyelle v
 	 if v=="a" || v=="e" || v=="i" || v=="o" || v=="u" || v=="y" || v=="é" || v=="è" || v=="ê" || v=="î" || v=="û" || v=="ô"
 			return true 
@@ -360,7 +360,7 @@ def rimesp mot
 	end
 	
 	def rimephono(dico, mot)
-		output = "rime2.txt"
+		output = "rime3.txt"
 		File.open(dico, "r:UTF-8").each_line do |line|
 			x=0 
 			longueur = line.length
@@ -424,21 +424,21 @@ def rimesp mot
 				if (an mot3) || (un mot3) || (eu mot3)
 					combi = mot3
 					puts combi unless exist.include?(combi)
-					rimephono("rime.txt", combi) unless exist.include?(combi)
+					rimephono(dic, combi) unless exist.include?(combi)
 					exist.push(combi) unless exist.include?(combi)
 					i =i+3
 				else
 					if (an mot2) || (un mot2) || (on mot2) || (ou mot2) || (eu mot2) || (au mot2) || (ai mot2) || (a mot2)
 						combi = mot2 unless ((mot2 == "an" && (voyelle mot[i+2])) || ((ai mot2) && (ey1=="e")))
 						puts combi unless exist.include?(combi)
-						rimephono("rime.txt", combi) unless exist.include?(combi)
+						rimephono(dic, combi) unless exist.include?(combi)
 						exist.push(combi) unless exist.include?(combi)
 						i =i+2
 					else 
 						if (a mot[i]) || (ai mot[i]) || (i mot[i]) || (au mot[i]) || (u mot[i])
 							combi = mot[i] unless (ai mot[i]) && (ey1=="e")
 							puts combi unless exist.include?(combi)
-							rimephono("rime.txt", combi) unless exist.include?(combi)
+							rimephono(dic, combi) unless exist.include?(combi)
 							exist.push(combi) unless exist.include?(combi)
 							i =i+1
 						else
@@ -576,6 +576,7 @@ get '/' do
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
 	@rimedoc2 = File.open("rime2.txt", "w+")
+	@rimedoc3 = File.open("rime3.txt", "w+")
 	@asso1 = Array.new
 	@asso1 = []
 	@asso2 = Array.new
@@ -597,6 +598,7 @@ post '/' do
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
 	@rimedoc2 = File.open("rime2.txt", "w+")
+	@rimedoc3 = File.open("rime3.txt", "w+")
 	@asso1 = Array.new
 	@asso1 = []
 	@asso2 = Array.new
@@ -611,19 +613,20 @@ post '/' do
 	
 	if params[:rimeo] == "1"
 		rimesr params[:mot].downcase
+		phonetique(params[:mot].downcase, "rime2.txt")
 		@radio = 1
 		
 	else
 		assonance params[:mot].downcase
-		rimesp params[:mot].downcase
+		rimesp(params[:mot].downcase, "rime.txt")
 		@radio = 0
 	end
+	nodouble("rime3.txt", "rime_final.txt")
 	
-	nodouble("rime2.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	if @rimedoc.empty? && @radio == 0
-		phonetique params[:mot].downcase
-		nodouble("rime2.txt", "rime_final.txt")
+		phonetique(params[:mot].downcase, "rime.txt")
+		nodouble("rime3.txt", "rime_final.txt")
 	    @rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	end 
 	
@@ -636,6 +639,7 @@ get '/dictionnaire/:rime' do
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
 	@rimedoc2 = File.open("rime2.txt", "w+")
+	@rimedoc3 = File.open("rime3.txt", "w+")
 	@asso1 = Array.new
 	@asso1 = []
 	@asso2 = Array.new
@@ -650,18 +654,19 @@ get '/dictionnaire/:rime' do
 	
 	if @radio == 1
 		rimesr params['rime'].downcase
+		phonetique(params['rime'].downcase, "rime2.txt")
 		@radio = 1
 		
 	else
 		assonance params['rime'].downcase
-		rimesp params['rime'].downcase
+		rimesp(params['rime'].downcase, "rime.txt")
 		@radio = 0
 	end
-	nodouble("rime2.txt", "rime_final.txt")
+	nodouble("rime3.txt", "rime_final.txt")
 	@rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	if @rimedoc.empty? && @radio == 0
-		phonetique params['rime'].downcase
-		nodouble("rime2.txt", "rime_final.txt")
+		phonetique(params['rime'].downcase, "rime.txt")
+		nodouble("rime3.txt", "rime_final.txt")
 	    @rimedoc = File.open("rime_final.txt", "r:UTF-8").to_a
 	end 
 	classage params['rime'].downcase 
