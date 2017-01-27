@@ -144,7 +144,7 @@ def phonetique mot
 		end
 	end
 	def un x
-		if x=="in" || x=="ien" || x=="ain" || x=="ein" || x=="un"
+		if x=="in" || x=="ien" || x=="ain" || x=="ein" 
 			return true
 		end
 	end
@@ -349,7 +349,7 @@ def rimesp mot
 		end
 	end
 	def un x
-		if x=="in" || x=="ien" || x=="ain" || x=="ein" || x=="un"
+		if x=="in" || x=="ien" || x=="ain" || x=="ein" 
 			return true
 		end
 	end
