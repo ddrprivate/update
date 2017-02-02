@@ -736,7 +736,9 @@ end
 get '/kaaris' do
 	erb :kaaris
 end 
-
+get '/vald' do
+	erb :vald
+end
 get '/classement' do		
 	erb :classement
 end 
