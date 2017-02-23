@@ -739,6 +739,12 @@ end
 get '/vald' do
 	erb :vald
 end
+get '/damso' do
+	erb :damso
+end
+get '/pnl' do
+	erb :pnl
+end
 get '/classement' do		
 	erb :classement
 end 
