@@ -745,6 +745,9 @@ end
 get '/pnl' do
 	erb :pnl
 end
+get '/nepal' do
+	erb :nepal
+end
 get '/classement' do		
 	erb :classement
 end 
