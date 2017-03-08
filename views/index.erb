@@ -6,8 +6,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Trouvez des rimes et allitérations simplement avec notre dictionnaire de rimes adapté au rap Français, améliorez votre écriture et gardez l'inspiration..."/>
-		<meta name="keywords" content="dictionnaire de rimes, dico de rimes, rimes, rap français, rap, hip-hop, allitérations, assonances"/>
-	
+		<meta name="keywords" content="dictionnaire de rimes, dictionnaire des rimes, dictionnaire rimes, dico des rimes, dictionnaire allitérations, rap français, rap, hip-hop, allitérations, assonances"/>
+		<meta name="Content-Language" content="fr" />
 		
 		<meta name="twitter:card" value="summary"/>
 		<meta property="og:title" content="Dealer de Rime | Trouvez l'inspiration, écrivez vos textes" />
@@ -65,8 +65,8 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="/#dictionnaire">Dictionnaire de rimes</a></li>
-							<li><a href="/classement">Classements</a></li>
-							<li><a href="/a-propos">À propos</a></li>
+							<li><a href="/classement_rap_français">Classements</a></li>
+							<li><a href="/a-propos-dictionnaire-de-rimes">À propos</a></li>
 							<li><a href="/inscription" class="button special">Sign Up</a></li>
 						</ul>
 					</nav>
@@ -78,7 +78,7 @@
 						<header>
 							<h2 itemprop="name">Dealer de Rimes</h2>
 							<p><strong>Trouvez l’inspiration avec notre dictionnaire de rimes et allitérations.</strong><br>Il contient les mots et expressions les plus utilisés du Rap Français.<br><br>
-							   Entrez un mot et notre algorithme vous proposera les meilleurs rimes<br> en fonction des <a href="/a-propos">allitérations</a> trouvées.<br><br>Nous utilisons aussi l’algorithme pour vous proposer un <a href="/classement">classement</a><br> des meilleurs rappeurs et albums du Rap Français en fonction de la<br> diversité des mots utilisés. 
+							   Entrez un mot et notre algorithme vous proposera les meilleurs rimes<br> en fonction des <a href="/a-propos-dictionnaire-de-rimes">allitérations</a> trouvées.<br><br>Nous utilisons aussi l’algorithme pour vous proposer un <a href="/classement_rap_français">classement</a><br> des meilleurs rappeurs et albums du Rap Français en fonction de la<br> diversité des mots utilisés. 
 						</header>
 						<span class="image" itemprop="image"><img src="images/dictionnaire_de_rimes_logo.jpg" alt="dealerderimes logo" style="max-width: 100%; height: auto;"/></span>
 					</div>
@@ -141,46 +141,46 @@
 								<h5><%=@asso1.first%></h5>
 								<%@asso1=@asso1.drop(1) unless @asso1.empty?%>
 								<%@asso1.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire-de-rimes/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								&nbsp
 								<h5></h5>
 								<h5><%=@asso2.first%></h5>
 								<%@asso2=@asso2.drop(1) unless @asso2.empty?%>
 								<%@asso2.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire-de-rimes/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								&nbsp
 								<h5></h5>
 								<h5><%=@asso3.first%></h5>
 								<%@asso3=@asso3.drop(1) unless @asso3.empty?%>
 								<%@asso3.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire-de-rimes/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								<h5></h5>
 								&nbsp
 								<h5><%=@asso4.first%></h5>
 								<%@asso4=@asso4.drop(1) unless @asso4.empty?%>
 								<%@asso4.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire-de-rimes/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								<h5></h5>
 								&nbsp
 								<h5><%=@asso5.first%></h5>
 								<%@asso5=@asso5.drop(1) unless @asso5.empty?%>
 								<%@asso5.each do |x|%>
-								<li><a href="/dictionnaire/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
+								<li><a href="/dictionnaire-de-rimes/<%=x.force_encoding("UTF-8")%>" style="color: rgba(255, 255, 255, 0.75"> <%=x.force_encoding("UTF-8") + "  "%></a></li>
 								<% end %>
 								</ul>
 								<%end%>
 								<center>
 							 <ul class="icons">
 							 <p><strong>Exemples:</strong></p>
-							<li>Rimes avec:<a href="/dictionnaire/bicrave" itemprop="url"> Bicrave</a></li>
-							<li>Rimes avec:<a href="/dictionnaire/qualité" itemprop="url"> Qualité</a></li>  
+							<li>Rimes avec:<a href="/dictionnaire-de-rimes/bicrave" itemprop="url"> Bicrave</a></li>
+							<li>Rimes avec:<a href="/dictionnaire-de-rimes/qualité" itemprop="url"> Qualité</a></li>  
 							</ul>
 							 </center>
-								<center itemprop="about"><a href="/a-propos" itemprop="url"> Comment ça marche ? </a></center>
+								<center itemprop="about"><a href="/a-propos-dictionnaire-de-rimes" itemprop="url"> Comment ça marche ? </a></center>
 							
 							
 

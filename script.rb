@@ -634,7 +634,7 @@ post '/' do
 	erb :index 
 end
 
-get '/dictionnaire/:rime' do
+get '/dictionnaire-de-rimes/:rime' do
 	@radio = 1
 	@rimedoc = File.open("rime_final.txt", "w+")
 	@rimedoc1 = File.open("rime.txt", "w+")
@@ -673,7 +673,7 @@ get '/dictionnaire/:rime' do
 	erb :dictionnaire
 end 
 
-get '/a-propos' do
+get '/a-propos-dictionnaire-de-rimes' do
 	erb :about
 end 
 
@@ -729,25 +729,25 @@ post '/lucas_pedroza_en' do
 	erb :profil_en
 end
 
-get '/nekfeu' do
+get '/nekfeu_classement_des_mots' do
 	erb :nekfeu
 end
 
-get '/kaaris' do
+get '/kaaris_classement_des_mots' do
 	erb :kaaris
 end 
-get '/vald' do
+get '/vald_classement_des_mots' do
 	erb :vald
 end
-get '/damso' do
+get '/damso_classement_des_mots' do
 	erb :damso
 end
-get '/pnl' do
+get '/pnl_classement_des_mots' do
 	erb :pnl
 end
-get '/nepal' do
+get '/nepal_classement_des_mots' do
 	erb :nepal
 end
-get '/classement' do		
+get '/classement_rap_français' do		
 	erb :classement
 end 
