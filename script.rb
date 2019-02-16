@@ -1,8 +1,12 @@
 #encoding: UTF-8
+require 'rubygems'
 require 'sinatra'
+require 'nokogiri' 
+require 'open-uri'
 require 'pony'
 require 'sendgrid-ruby'
 require 'sinatra/base'
+require 'set'
 
 class Application < Sinatra::Base
   configure do
@@ -22,6 +26,12 @@ class Application < Sinatra::Base
   end
 
  
+end
+
+class String
+  def is_integer?
+    self.to_i.to_s == self
+  end
 end
 
 def assonance mot 
@@ -451,10 +461,21 @@ def rimesp mot, dic
 end
 
 
-def nodouble(source, target)
+def nodouble(source, target) #comparing with dico_final
 	double = Set.new 
 	File.open(target, 'a') do |solo|
 		File.open(source, "r").each_line do |line|
+			if double.add?(line)
+			solo << line
+			end
+		end
+	end
+end
+
+def nodouble2(source, target)  #for rankings
+	double = Set.new 
+	File.open(target, 'w+') do |solo|
+		File.open(source, 'r').each_line do |line|
 			if double.add?(line)
 			solo << line
 			end
@@ -729,25 +750,133 @@ post '/lucas_pedroza_en' do
 	erb :profil_en
 end
 
-get '/nekfeu_classement_des_mots' do
-	erb :nekfeu
+
+
+get '/classement_rap_français' do		
+	@pos = 1		
+	@ranking = {}
+	File.open('rank.txt', 'r:UTF-8') do |fp|
+		fp.each do |line|
+		key, value = line.split(/,/)
+		@ranking[key] = value.to_i
+		
+		end
+	end
+	@ranking = @ranking.sort_by { |key, value| -value }
+	
+	@affiliate = {}
+	File.open('apple.txt', 'r:UTF-8') do |fp|
+		fp.each do |line|
+		key, value = line.split(/,/)
+		@affiliate[key] = value.to_s
+		puts @affiliate[key]
+		end
+	end
+	
+	
+	erb :classement
+	
+end 
+
+post '/classement_rap_français' do	
+		File.open("dico.txt", "w+")
+		dico = "dico.txt"
+		page = Nokogiri::HTML(open(params[:lien]))   
+		links = page.css('a.u-display_block') #links of song
+		album = page.css('h1').text #name of the album
+		artist = page.css('a')[6].text #name of the artist
+		year = page.css('div.metadata_unit')[0].text.split # year of release 
+		numb = page.css('span').text.split #get the number of songs
+
+
+		c = 0
+		File.open 'out.txt', 'w+'
+		numb.each do |num|
+			if num.is_integer? && num.to_i > c && num.to_i < 30
+				f = File.open('out.txt', 'a')
+				f.write(num)
+				f.write("\n")
+				f.close
+				c += 1
+			else
+			end
+		end
+
+		number = File.readlines('out.txt').last.to_i #number of songs
+
+
+		links.each do |song|
+			page = Nokogiri::HTML(open(song["href"]))   
+			lyrics = page.css('div.song_body-lyrics')
+			lyrics = lyrics.text.downcase 
+			
+			mots = lyrics.split(/[^[[:word:]]]+/)
+			
+			mots.each do |mot|
+			
+			File.open dico, 'a' do |f| 
+				f.puts mot.capitalize
+				end
+			end
+			
+			
+		end
+
+		mots = File.readlines(dico)
+		mots = mots.sort
+
+		File.open dico, 'w+'
+			
+		mots.each do |mot|
+			
+			File.open dico, 'a' do |f| 
+				f.puts mot.capitalize
+				end
+			end
+
+
+		nodouble2('dico.txt', 'dico_unique.txt')
+
+		count = Hash.new 0
+
+		File.open("dico_unique.txt", "r:UTF-8").each_line do |mot|
+				count[mot] += 1
+				end
+			
+		keyword = count.length / number
+
+		name = album + " - " + artist + " (" + year.last + ")"
+
+		f = File.open('rank.txt', 'a')
+		f.write("\n")
+		f.write(name)
+		f.write(", ")
+		f.write(keyword)
+		f.close
+		
+		@pos = 1		
+		@ranking = {}
+		File.open('rank.txt', 'r:UTF-8') do |fp|
+		fp.each do |line|
+		key, value = line.split(/,/)
+		@ranking[key] = value.to_i
+		
+		end
+		end
+		@ranking = @ranking.sort_by { |key, value| -value }
+		
+		@affiliate = {}
+		File.open('apple.txt', 'r:UTF-8') do |fp|
+		fp.each do |line|
+		key, value = line.split(/,/)
+		@affiliate[key] = value.to_s
+		puts @affiliate[key]
+		end
+	end
+		
+	erb :classement
 end
 
-get '/kaaris_classement_des_mots' do
-	erb :kaaris
-end 
-get '/vald_classement_des_mots' do
-	erb :vald
-end
-get '/damso_classement_des_mots' do
-	erb :damso
-end
-get '/pnl_classement_des_mots' do
-	erb :pnl
-end
-get '/nepal_classement_des_mots' do
-	erb :nepal
-end
-get '/classement_rap_français' do		
-	erb :classement
+get '/article_meilleur_micros_rap' do		
+	erb :meilleur_micro
 end 

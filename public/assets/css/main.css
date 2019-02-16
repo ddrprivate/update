@@ -55,7 +55,22 @@
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-
+	.boutique {
+		margin: 0 150px 4em 150px;
+		position: relative;
+		text-align: justify;
+		font-size: 1.2em;
+		background: #17181e;
+		padding: 25px 25px 25px 25px;
+		
+	}
+	.float-right {
+		float: right;
+		margin-left:40px;
+		width: 150px;
+		height: 300px;
+	}
+		
 /* Containers */
 
 	.container {
@@ -2125,7 +2140,14 @@
 		margin-top: -0.6em;
 		line-height: 1.5em;
 	}
-
+    header.blog {
+			margin: 0 150px 4em 150px;
+			position: relative;
+			text-align: justify;
+			font-size: 1.2em;
+			background: #17181e;
+			padding: 25px 25px 25px 25px;
+		}
 	header.major {
 		margin: 0 0 4em 0;
 		position: relative;
@@ -2140,8 +2162,9 @@
 			max-width: 20em;
 			width: 75%;
 		}
+		
 
-	footer.major {
+	 footer.major {
 		margin: 4em 0 0 0;
 	}
 

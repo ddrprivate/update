@@ -46,10 +46,10 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="/#dictionnaire">Dictionnaire de rimes</a></li>
-							<li><a target="_blank" href="https://soundcloud.com/lu-production">Soundcloud: Free Beats</a></li>
+							<li><a target="_blank" href="https://soundcloud.com/lu-production">Instrus/Beats</a></li>
 							<li><a href="/classement_rap_français">Classements</a></li>
 							<li><a href="/a-propos-dictionnaire-de-rimes">À propos</a></li>
-							<li><a href="/inscription" class="button special">Sign Up</a></li>
+							<li><a href="/article_meilleur_micros_rap" class="button special">Microphone</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -59,70 +59,19 @@
 					<div class="content">
 						<header>
 						<h2>Classements du Rap Français</h2>
-							<p><strong>Dans cette partie du site, nous vous proposons un classement des rappeurs<br> français et de leurs 
-								albums en fonction de la diversité de leurs vocabulaire.</strong><br> Pour cela, nous regardons le nombre de mots différents par chanson<br> en moyenne.<br><br>
-								En cliquant sur le nom d'un rappeur, vous pouvez aussi accéder<br> à un classement de ses mots les plus utilisés.
-							<br><br>
-								D'autres rappeurs seront rajoutés au fur et à mesure, n'hésitez pas<br> à nous en suggérer par mails ou sur les réseaux sociaux
+							<p><br><strong>Ici, nous vous proposons un classement des albums du rap français en fonction <br>de la diversité du vocabulaire utilisé</strong><br><br> Pour cela, nous regardons le nombre de mots différents par chanson en moyenne<br><br>
+								<br><strong>Cliquez sur le nom d'un album pour le découvrir et écouter ses musiques</strong><br>
+								<br>
+								Si vous remarquez un album manquant, <a href="#ajouterunalbum"> rajoutez le ici </a> et contribuez au classement !
 										</p>
 						</header>
-						<span class="image"><img src="images/classement_rap.png" alt="logo classement rap" style="max-width: 100%; height: auto;"/></span>
-						<ul class="album">
-							<li><a href="#rappeurs">Rappeurs</a></li>
-							<li><a href="#album">Albums</a></li>		
-						</ul>
+						<span class="image"><img src="images/classement_roi.jpg" alt="logo classement rap" style="max-width: 100%; height: auto;"/></span>
 					</div>
 					<a href="#rappeurs" class="goto-next scrolly">Next</a>
 				</section>
 			<!-- Main -->
 				<div id="main" class="wrapper style1">
 					<div class="container">
-						<section id="rappeurs">
-								<h3>Classement des rappeurs</h3>
-								<div class="table-wrapper">
-									<table>
-										<thead>
-											<tr>
-												<th>Position</th>
-												<th>Rappeur</th>
-												<th>Nombre de mots différents par chanson(en moyenne)</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>#1</td>
-												<td><a target="_blank" href="/nekfeu_classement_des_mots">Nekfeu</a> </td>
-												<td>168</td>
-											</tr>
-											<tr>
-												<td>#2</td>
-												<td><a target="_blank" href="/vald_classement_des_mots">Vald</a> </td>
-												<td>134</td>
-											</tr>
-											<tr>
-												<td>#3</td>
-												<td><a target="_blank" href="/damso_classement_des_mots">Damso</a></td>
-												<td>133,5</td>
-											</tr>
-											<tr>
-												<td>#4</td>
-												<td><a target="_blank" href="/nepal_classement_des_mots">Népal</a></td>
-												<td>133</td>
-											</tr>
-											<tr>
-												<td>#5</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots">Kaaris</a></td>
-												<td>132</td>
-											</tr>
-											<tr>
-												<td>#6</td>
-												<td><a target="_blank" href="/pnl_classement_des_mots">PNL</a></td>
-												<td>112</td>
-											</tr>
-											</tbody>
-									</table>
-									<br>
-								
 								<section id="album">
 								<h3>Classement des albums</h3>
 								<div class="table-wrapper">
@@ -135,109 +84,56 @@
 											</tr>
 										</thead>
 										<tbody>
+										<%@ranking.each do |key, value|%>
+											<% if @affiliate.has_key? key %>
 											<tr>
-												<td>#1</td>
-												<td><a target="_blank" href="/nekfeu_classement_des_mots#cyborg">Nekfeu - Cyborg (2016)</a></td>
-												<td>196</td>
+												<td><%=@pos%></td>
+												<td><a target="_blank" href="<%=@affiliate[key]%>"> <%=key%> </a></td>
+												<td> <%=value%> </td>
 											</tr>
+											<% else%>
 											<tr>
-												<td>#2</td>
-												<td><a target="_blank" href="/vald_classement_des_mots#nqnt2">Vald - NQNT (2014)</a></td>
-												<td>166</td>
+												<td><%=@pos%></td>
+												<td><a target="_blank" href="#album"> <%=key%> </a></td>
+												<td> <%=value%> </td>
 											</tr>
-											<tr>
-												<td>#3</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#zero">Kaaris - Z.E.R.O (2012)</a></td>
-												<td>151</td>
-											</tr>
-											<tr>
-												<td>#4</td>
-												<td><a target="_blank" href="/nekfeu_classement_des_mots#feu">Nekfeu - Feu (2015) </a></td>
-												<td>148</td>
-											</tr>
-											<tr>
-												<td>#5</td>
-												<td><a target="_blank" href="/vald_classement_des_mots#nqnt2">Vald - NQNT 2 (2015)</a></td>
-												<td>147</td>
-											</tr>
-											<tr>
-												<td>#6</td>
-												<td><a target="_blank" href="/pnl_classement_des_mots#que_la_famille">PNL - Que La Famille (2015)</a></td>
-												<td>145</td>
-											</tr>
-											<tr>
-												<td>#7</td>
-												<td><a target="_blank" href="/damso_classement_des_mots#salle_d'attente">Damso - Salle d'attente (2014)</a></td>
-												<td>143</td>
-											</tr>
-											<tr>
-												<td>#7bis</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#ornoir2">Kaaris - Or Noir Part 2 (2014)</a></td>
-												<td>143</td>
-											</tr>
-											<tr>
-												<td>#8</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#lebruit">Kaaris - Le Bruit De Mon Âme (2015)</a></td>
-												<td>137</td>
-											</tr>
-											<tr>
-												<td>#9</td>
-												<td><a target="_blank" href="/nepal_classement_des_mots#444nuits">Népal - 444Nuits (2016)</a></td>
-												<td>133,5</td>
-											</tr>
-											<tr>
-												<td>#10</td>
-												<td><a target="_blank" href="/nepal_classement_des_mots#16par16">Népal - 16par16 (2014)</a></td>
-												<td>132,5</td>
-											</tr>
-											<tr>
-												<td>#11</td>
-												<td><a target="_blank" href="/damso_classement_des_mots#batterie_faible">Damso - Batterie faible (2016)</a></td>
-												<td>130</td>
-											</tr>
-											<tr>
-												<td>#12</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#ornoir">Kaaris - Or Noir (2013)</a></td>
-												<td>125</td>
-											</tr>
-											<tr>
-												<td>#13</td>
-												<td><a target="_blank" href="/vald_classement_des_mots#agartha">Vald - Agartha (2017)</a></td>
-												<td>123</td>
-											</tr>
-											<tr>
-												<td>#14</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#doublefuck">Kaaris - Double Fuck (2015)</a></td>
-												<td>118</td>
-											</tr>
-											<tr>
-												<td>#15</td>
-												<td><a target="_blank" href="/vald_classement_des_mots#nqntmqmqmb">Vald - NQNTMQMQMB (2012)</a></td>
-												<td>115</td>
-											</tr>
-											<tr>
-												<td>#16</td>
-												<td><a target="_blank" href="/kaaris_classement_des_mots#okougnakouri">Kaaris - Okou Gnakouri (2016)</a></td>
-												<td>108</td>
-											</tr>
-											<tr>
-												<td>#17</td>
-												<td><a target="_blank" href="/pnl_classement_des_mots#le_monde_chico">PNL - Le Monde Chico (2015)</a></td>
-												<td>106</td>
-											</tr>
-											<tr>
-												<td>#18</td>
-												<td><a target="_blank" href="/pnl_classement_des_mots#dans_la_légende">PNL - Dans la légende (2016)</a></td>
-												<td>96</td>
-											</tr>
+											<%end%>
+											<%@pos += 1 %>
+										<% end %>
+										
 										</tbody>
 									</table>
 								</div>
 								</section>
+					</div>	
+
+								<section id="ajouterunalbum" class="wrapper style1">
+								<div class="container">
+								<header class="major">
 								
+									<h3>Ajouter un album de rap Français au classement !</h3>
+									<h4>Pour ce faire, renseingner un lien 'Rap Genius' de l'album. Par exemple:</h4>
+									<p>https://genius.com/albums/Nekfeu/Cyborg</p>
+									
+								<form method="post" action="/classement_rap_français#album">
+									<div class="row uniform 50%">
+										<div class="12u$">
+											<input type="text" name="lien" id="name" value="" pattern="https://genius.com/albums.*" placeholder="Entrez le lien d'un album" />
+										</div>
+										
+										<div class="12u$">
+											<ul class="actions">
+												<li><input type="submit" value="Ajouter" class="special" /></li>
+											</ul>
+									</div>
+								</form>
+										
+								</header>
+								</div>	
+							    </section>
+									
 						
-						
-					</div>
+					
 			<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">
