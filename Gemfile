@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.2.6'
 gem 'sinatra'
 gem 'pony'
 gem 'sendgrid-ruby'
 gem 'nokogiri'
 gem "activerecord"
-
+gem "sinatra-activerecord"
 gem "pg"
