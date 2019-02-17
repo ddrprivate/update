@@ -876,7 +876,3 @@ post '/classement_rap_français' do
 		
 	erb :classement
 end
-
-get '/article_meilleur_micros_rap' do		
-	erb :meilleur_micro
-end 
