@@ -10,7 +10,7 @@ require 'set'
 require 'sinatra/activerecord'
 require './config/environments' #database configuration
 
-class Post < ActiveRecord::Base
+class Album < ActiveRecord::Base
 end
 
 class Application < Sinatra::Base
@@ -851,6 +851,8 @@ post '/classement_rap_français' do
 		keyword = count.length / number
 
 		name = album + " - " + artist + " (" + year.last + ")"
+		
+		
 
 		f = File.open('rank.txt', 'a')
 		f.write("\n")
