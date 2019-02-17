@@ -10,6 +10,8 @@ require 'set'
 require 'sinatra/activerecord'
 require './config/environments' #database configuration
 
+class Post < ActiveRecord::Base
+end
 
 class Application < Sinatra::Base
   configure do
