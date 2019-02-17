@@ -7,6 +7,9 @@ require 'pony'
 require 'sendgrid-ruby'
 require 'sinatra/base'
 require 'set'
+require 'sinatra/activerecord'
+require './config/environments' #database configuration
+
 
 class Application < Sinatra::Base
   configure do
